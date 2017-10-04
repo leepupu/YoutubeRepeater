@@ -14,8 +14,8 @@ javascript: (function () {
             }
         };
         checkReady(function ($) {
-            $('#eow-title').append('<button id="lpRepeatAMinus" class="yt-uix-button yt-uix-button-text">A -</button>');
-            $('#eow-title').append('<button id="lpRepeatAPlus" class="yt-uix-button yt-uix-button-text">A +</button>');
+            $('#top-level-buttons').append('<button id="lpRepeatAMinus" class="yt-uix-button yt-uix-button-text">A -</button>');
+            $('#top-level-buttons').append('<button id="lpRepeatAPlus" class="yt-uix-button yt-uix-button-text">A +</button>');
             $('#lpRepeatAMinus').click(function () {
                 window.lpRepeatATime -= 0.5;
             });
@@ -25,8 +25,8 @@ javascript: (function () {
         });
     };
     var lpRepeatFunction = function () {
-        var player = yt.player.getPlayerByElement(document.getElementById('player-api'));
-        var txt = document.getElementById('masthead-search-term');
+        var player = document.getElementById("movie_player");
+        var txt = document.getElementById('search');
         if (!('lpRepeatStatus' in window)) {
             lpRepeatLoadJQ();
         }
@@ -47,7 +47,7 @@ javascript: (function () {
         }
         window.checkerTimer = function () {
             console.log('called');
-            player = yt.player.getPlayerByElement(document.getElementById('player-api'));
+            player = document.getElementById("movie_player");
             if (player.getCurrentTime() >= window.leRepeatBTime) {
                 player.seekTo(window.lpRepeatATime);
             }
